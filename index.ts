@@ -105,6 +105,183 @@ let changeContent = () => {
     bestPlayer.innerHTML = `MAN OF THE MATCH `;
 }
 
+let craeteCol5 = (num : number) : HTMLDivElement => {
+    let col = <HTMLDivElement>document.createElement('div');
+    col.classList.add('col-5');
+
+    let teamname = <HTMLDivElement>document.createElement('div');
+    teamname.classList.add('team-name');
+    teamname.innerText = `Team ${num} Score` ;
+
+    let score = <HTMLDivElement>document.createElement('div');
+    score.classList.add('score', 'm-1')
+    score.id = `team-${num}-score`;
+    score.innerText = "0";
+
+    let hitButton = <HTMLButtonElement>document.createElement('button');
+    hitButton.classList.add('btn', 'btn-sm', 'btn-primary');
+    hitButton.id = `team${num}`
+    hitButton.disabled = true;
+    hitButton.innerText = `HIT ${num}`;
+
+    col.append(teamname, score, hitButton);
+    return col
+}
+
+
+let createPlayBaord = () => {
+    let table1 = createTable('Team 1');
+    let t1 = (<HTMLDivElement>document.getElementsByClassName('team-score-board-1')[0]);
+    while (t1.children.length) t1.removeChild(t1.firstElementChild)
+    t1.append(table1);
+
+    let table2 = createTable('Team 2');
+    let t2 = (<HTMLDivElement>document.getElementsByClassName('team-score-board-2')[0]);
+    while (t2.children.length) t2.removeChild(t2.firstElementChild)
+
+    t2.append(table2);
+    match = new Cricket()
+}
+
+
+
+let container = <HTMLDivElement>document.createElement('div');
+container.classList.add('contianer','m-3', 'text-center', 'justify-content-center');
+
+let heading = <HTMLDivElement>document.createElement('div')
+heading.classList.add('heading');
+heading.innerText = 'CRICKET';
+
+let hr1 = <HTMLHRElement>document.createElement('hr');
+let hr2 = <HTMLHRElement>document.createElement('hr');
+let hr3 = <HTMLHRElement>document.createElement('hr');
+
+let teamrow = <HTMLDivElement>document.createElement('div');
+teamrow.classList.add('row');
+
+let team1col = craeteCol5(1);
+let team2col = craeteCol5(2);
+
+let timerCol = <HTMLDivElement>document.createElement('div');
+timerCol.classList.add('col-2');
+
+let timerDiv = <HTMLDivElement>document.createElement('div');
+timerDiv.classList.add('timer', 'none');
+timerDiv.innerText = 'Timer';
+
+let countdown = <HTMLParagraphElement>document.createElement('p');
+countdown.classList.add('count-down');
+
+timerDiv.append(countdown);
+
+let start = document.createElement('button');
+start.classList.add('btn', 'btn-sm', 'btn-primary', 'center');
+start.id = 'start';
+start.innerText = 'Start';
+
+timerCol.append(timerDiv, start);
+teamrow.append(team1col, timerCol, team2col);
+
+let scoreBoard = <HTMLDivElement>document.createElement('div');
+scoreBoard.classList.add('scoreBoard');
+
+let scoreRow = <HTMLDivElement>document.createElement('div');
+scoreRow.classList.add('row');
+
+let team1ScoreCol = <HTMLDivElement>document.createElement('div');
+team1ScoreCol.classList.add('col-5');
+
+let team1Board = <HTMLDivElement>document.createElement('div');
+team1Board.classList.add('team-score-board-1');
+
+team1ScoreCol.append(team1Board);
+
+let resultField = <HTMLDivElement>document.createElement('div');
+resultField.classList.add('col-2', 'mt-5', 'result');
+
+let resultBtn = <HTMLButtonElement>document.createElement('button');
+resultBtn.classList.add('result-btn', 'btn', 'btn-sm', 'btn-primary');
+resultBtn.disabled = true;
+resultBtn.innerText = 'GENERATE RESULT';
+
+let matchResultTag = <HTMLParagraphElement>document.createElement('p');
+matchResultTag.classList.add('match-result', 'light', 'mt-3')
+matchResultTag.innerText = 'MATCH WON BY';
+
+let bestPlayerTag = <HTMLParagraphElement>document.createElement('p');
+bestPlayerTag.classList.add('best-player', 'light',)
+bestPlayerTag.innerText = 'MAN OF THE MATCH';
+
+resultField.append(resultBtn, matchResultTag, hr3, bestPlayerTag);
+
+let team2ScoreCol = <HTMLDivElement>document.createElement('div');
+team2ScoreCol.classList.add('col-5');
+
+let team2Board = <HTMLDivElement>document.createElement('div');
+team2Board.classList.add('team-score-board-2');
+
+team2ScoreCol.append(team2Board);
+
+scoreRow.append(team1ScoreCol, resultField, team2ScoreCol);
+scoreBoard.append(scoreRow);
+
+container.append(heading, hr1, teamrow, hr2, scoreBoard);
+
+document.body.append(container);
+
+
+
+// <div class="contianer m-3 text-center justify-content-center">
+// <div class="heading">
+//     CRICKET
+// </div>
+// <hr>
+// <div class="row">
+//     <div class="col-5">
+//         <div class="team-name">
+//             Team 1 Score
+//         </div>
+//         <div class="score m-1" id="team-1-score">0</div>
+//         <button class="btn btn-sm btn-primary" id="team1" disabled>HIT 1</button>
+//     </div>
+//     <div class="col-2">
+//         <div class="timer none">
+//             Timer
+//             <p class="count-down"></p>
+//         </div>
+//         <button class="center btn btn-sm btn-primary" id="start">Start</button>
+//     </div>
+//     <div class="col-5">
+//         <div class="team-name">
+//             Team 2 Score
+//         </div>
+//         <div class="score  m-1" id="team-2-score">0</div>
+//         <button class="btn btn-sm btn-primary" id="team2" disabled>HIT 2</button>
+//     </div>
+// </div>
+// <hr>
+// <div class="scoreBoard">
+//     <div class="row">
+//         <div class="col-5">
+//             <div class="team-score-board-1"></div>
+//         </div>
+//         <div class="col-2  mt-5 result">
+//             <button class="result-btn btn btn-sm btn-primary" disabled>GENERATE RESULT</button>
+//             <p class="match-result light mt-3">MATCH WON BY</p>
+//             <hr>
+//             <p class="best-player light">MAN OF THE MATCH</p>
+//         </div>
+//         <div class="col-5">
+//             <div class="team-score-board-2"></div>
+//         </div>
+//     </div>
+// </div>
+// </div>
+createPlayBaord();
+let match = new Cricket(); 
+
+
+
 let startButton = <HTMLButtonElement>document.getElementById('start');
 let timer = <HTMLDivElement>document.getElementsByClassName('timer')[0];
 let resultButton = (<HTMLButtonElement>document.getElementsByClassName('result-btn')[0]);
@@ -118,6 +295,9 @@ let bestPlayer = (<HTMLParagraphElement>document.getElementsByClassName('best-pl
 startButton.addEventListener('click', (element) => {
     startButton.classList.add('none');
     timer.classList.remove('none');
+    team1Score.innerText = '0';
+    team2Score.innerText = '0';
+
     startTimer(timer.querySelector('p'), 'Player 1');
     (<HTMLButtonElement>document.getElementById('team1')).disabled = false
     changeContent();
@@ -147,19 +327,3 @@ team2.addEventListener('click', () => {
     team2Score.innerText = match.mumbai.teamScore.toString();
     if (!isValid) teamPlayed = true;
 })
-
-let createPlayBaord = () => {
-    let table1 = createTable('Team 1');
-    let t1 = (<HTMLDivElement>document.getElementsByClassName('team-score-board-1')[0]);
-    while (t1.children.length) t1.removeChild(t1.firstElementChild)
-    t1.append(table1);
-
-    let table2 = createTable('Team 2');
-    let t2 = (<HTMLDivElement>document.getElementsByClassName('team-score-board-2')[0]);
-    while (t2.children.length) t2.removeChild(t2.firstElementChild)
-
-    t2.append(table2);
-    match = new Cricket()
-}
-createPlayBaord();
-let match = new Cricket();

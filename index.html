@@ -7,13 +7,22 @@
     <title>Play Cricket</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body{
+        body {
             background-color: rgb(20, 26, 27);
             color: white !important;
         }
-        table, th, tr ,td{
+
+        table,
+        th,
+        tr,
+        td {
             color: white;
         }
+
+        hr {
+            background: white;
+        }
+
         * {
             font-family: cursive;
         }
@@ -30,7 +39,7 @@
             display: none;
         }
 
-        .timer{
+        .timer {
             font-size: 25px;
         }
 
@@ -44,7 +53,7 @@
             text-align: center;
         }
 
-        .result{
+        .result {
             padding-top: 100px;
         }
 
@@ -55,55 +64,10 @@
 </head>
 
 <body>
-    <div class="contianer m-3 text-center justify-content-center">
-        <div class="heading">
-            CRICKET
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-5">
-                <div class="team-name">
-                    Team 1 Score
-                </div>
-                <div class="score m-1" id="team-1-score">0</div>
-                <button class="btn btn-sm btn-primary" id="team1" disabled>HIT 1</button>
-            </div>
-            <div class="col-2">
-                <div class="timer none">
-                    Timer
-                    <p class="count-down"></p>
-                </div>
-                <button class="center btn btn-sm btn-primary" id="start">Start</button>
-            </div>
-            <div class="col-5">
-                <div class="team-name">
-                    Team 2 Score
-                </div>
-                <div class="score  m-1" id="team-2-score">0</div>
-                <button class="btn btn-sm btn-primary" id="team2" disabled>HIT 2</button>
-            </div>
-        </div>
-        <hr>
-        <div class="scoreBoard">
-            <div class="row">
-                <div class="col-5">
-                    <div class="team-score-board-1"></div>
-                </div>
-                <div class="col-2  mt-5 result">
-                    <button class="result-btn btn btn-sm btn-primary" disabled>GENERATE RESULT</button>
-                    <p class="match-result light mt-3">MATCH WON BY</p>
-                    <hr>
-                    <p class="best-player light">MAN OF THE MATCH</p>
-                </div>
-                <div class="col-5">
-                    <div class="team-score-board-2"></div>
-                </div>
-            </div>
-        </div>
-        <script src="zoo.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="zoo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
